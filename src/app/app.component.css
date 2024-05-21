@@ -1,0 +1,25 @@
+.background-image {
+    position: relative;
+    z-index: 0;
+}
+
+.background-image::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://i.blogs.es/4d650a/gogga/1366_2000.jpeg');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.3; /* Opacidad de la imagen de fondo */
+    z-index: -1; /* Coloca el pseudo-elemento detrás del contenido */
+}
+
+.opciones{
+    margin-left: 20px; /* Espacio entre las opciones */
+  }
+
+  .oscurecer:hover {
+    background-color: #999; /* Color de fondo al pasar el mouse */
+    color: #fff; /* Cambia el color de texto al pasar el mouse */
+  }

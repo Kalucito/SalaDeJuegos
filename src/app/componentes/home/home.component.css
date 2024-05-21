@@ -1,0 +1,151 @@
+.floating-image {
+    height: 250px;
+    width: 950px;
+    animation: floatAnimation 10s ease-in-out infinite alternate; /* Aplica la animación */
+}
+
+@keyframes floatAnimation {
+    0% {
+        transform: translateY(0) rotate(0deg); /* Inicia la transformación sin traslación ni rotación */
+    }
+    25% {
+        transform: translateY(-3px) rotate(3deg); /* Realiza una traslación hacia arriba y una rotación en sentido horario */
+    }
+    50% {
+        transform: translateY(3px) rotate(-3deg); /* Realiza una traslación hacia arriba y una rotación en sentido horario */
+    }
+    75% {
+        transform: translateY(-3px) rotate(3deg); /* Realiza una traslación hacia arriba y una rotación en sentido horario */
+    }
+    100% {
+        transform: translateY(0) rotate(-3deg); /* Vuelve a la posición original sin traslación ni rotación */
+    }
+}
+
+#divTotal{
+    background-color: linear-gradient(to right, rgb(14, 16, 28),rgb(39, 43, 67));
+    background: linear-gradient(to right, rgb(14, 16, 28), rgb(31, 34, 51));
+    height: 100vh;
+}
+
+
+
+  
+
+  
+/* INI BOTON ANIMADO */
+  
+  .buttonBox{
+    margin: 0 20px 40px;
+    position:relative;
+    max-width: 200px;
+    min-width: 150px;
+    flex: 20%;
+  }
+  
+  button{
+    width:100%;
+    height:80px;
+    position:relative;
+    background:rgba(0, 255, 21, 0.686);
+    text-transform:uppercase;
+    color:rgb(191, 191, 191);
+    font-weight:700;
+    letter-spacing:1px;
+    border:none;
+    font-size:15px;
+    outline:none;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    cursor: pointer;
+  }
+  
+  .border{
+      position:absolute;
+      background:none;
+      transition:all .5s ease-in-out;
+  }
+  
+  #sixth{
+    overflow:hidden;
+  }
+  
+  #sixth>button{
+    z-index:1;
+    transition:color .5s ease;
+  }
+  
+  #sixth .border{
+    z-index:0;
+    background:rgb(85, 54, 125);
+    width:30px;
+    height:30px;
+    transform:rotate(45deg);
+  }
+  
+  #sixth>.border:nth-of-type(1){
+    top:-35px;
+    left:-30px; 
+  }
+  
+  #sixth>.border:nth-of-type(2){
+    top:-35px;
+    right:-30px;
+  }
+  
+  #sixth>.border:nth-of-type(3){
+    bottom:-35px;
+    left:-30px;
+  }
+  
+  #sixth>.border:nth-of-type(4){
+    bottom:-30px;
+    right:-30px;
+  }
+  
+  #sixth:hover .border{
+    transform:scale(15.7) rotate(45deg);
+  }
+  
+  #sixth:hover button{
+    color:#ffffff;
+    transition:color 2s ease;
+  }
+  /* FIN BOTON ANIMADO */
+
+.caja-juegos{
+  position: absolute;
+  display: flex;
+  gap: 40px;
+  width: 100%;
+  height: 250px;
+  padding: 0px 50px;
+  box-sizing: border-box;
+  overflow: visible;
+  justify-content: center;
+  top: 50vh;
+}
+  .imagenes-juegos{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+
+.juegos{
+  width: 250px;
+  height: 250px;
+  filter: brightness(.5);
+  transition: .5s;
+  flex-shrink: 0;
+  filter: brightness(1.5);
+
+}
+
+.juegos:hover{
+  transform: scale(1.2);
+}
+
+.juego-elegido{
+  border: 5px solid wheat;
+}
+
