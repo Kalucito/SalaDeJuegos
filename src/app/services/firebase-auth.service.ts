@@ -17,7 +17,6 @@ import { User } from 'firebase/auth';
 export class FirebaseAuthService {
 
   private auth:Auth = inject(Auth);
-  obs!: Observable<User | null>;
   // readonly authState$ = authState(this.auth);
 
   register(userCredential:UserInterface): Promise<UserCredential>{
@@ -39,8 +38,7 @@ export class FirebaseAuthService {
   
   getUser(){
     // return authState;
-    this.obs = authState(this.auth);
-    return this.obs;
+    return authState(this.auth);
     // authState(this.auth).subscribe((response) => {
     //   return response;
     // })

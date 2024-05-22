@@ -15,23 +15,21 @@ import { authState, Auth } from '@angular/fire/auth';
 })
 export class AppComponent {
   title = 'SalaDeJuegos';
-  // user$ : User | null;
   
-  obs!: Observable<User | null>;
+  userObs$!: Observable<User | null>;
+  userValue!: User | null;
 
   private authservice = inject(FirebaseAuthService);
-  private auth:Auth = inject(Auth);
-  
-  
 
   constructor()
   {
     // this.user$ = this.authservice.getUser();
-    this.obs = this.authservice.getUser();
+    this.userObs$ = this.authservice.getUser();
+    this.userObs$.subscribe((response) => {
+      this.userValue = response;
+    })
   }
 
-  
-  
   async logOut(): Promise<void>{
     try{
       await this.authservice.logOut();
@@ -43,9 +41,9 @@ export class AppComponent {
 
   test()
   {
-    this.obs.subscribe((response) => {
-        console.log(response);
-      })
+    // this.obs.subscribe((response) => {
+    console.log(this.userValue);
+      // })
 
     // authState(this.auth).subscribe((response) => {
     //   console.log(response);

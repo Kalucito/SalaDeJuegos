@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
 import firebase from 'firebase/app';
 import { user, authState, Auth } from '@angular/fire/auth';
 import { usuario } from '../../models/usuario.model';
+import { User } from 'firebase/auth';
 
 
 
@@ -21,7 +22,21 @@ import { usuario } from '../../models/usuario.model';
 export class HomeComponent {
   imagenSeleccionada! : number;
 
+  userObs$!: Observable<User | null>;
+  userValue!: User | null;
+
   private authservice = inject(FirebaseAuthService);
+
+  constructor()
+  {
+    // this.user$ = this.authservice.getUser();
+    this.userObs$ = this.authservice.getUser();
+    this.userObs$.subscribe((response) => {
+      this.userValue = response;
+    })
+  }
+
+
   // // private auth:Auth = inject(Auth);
   
   // authState$ = this.authservice.getUser();
