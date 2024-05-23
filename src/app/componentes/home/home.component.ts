@@ -20,12 +20,13 @@ import { User } from 'firebase/auth';
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
-  imagenSeleccionada! : number;
+  juegoSeleccionado! : number;
 
   userObs$!: Observable<User | null>;
   userValue!: User | null;
 
   private authservice = inject(FirebaseAuthService);
+  private router = inject(Router);
 
   constructor()
   {
@@ -42,21 +43,19 @@ export class HomeComponent {
   // authState$ = this.authservice.getUser();
 
   seleccionarImagen(numeroImagen: number): void {
-    this.imagenSeleccionada = numeroImagen;
+    this.juegoSeleccionado = numeroImagen;
   }
 
-  // async logOut(): Promise<void>{
-  //   try{
-  //     await this.authservice.logOut();
-  //   }catch(e){
-  //     console.log(e);
-  //   }
-    
-  // }
-
-  test()
+  jugar()
   {
-    console.log(this.authservice.getUser());
+    if(this.userValue?.email != null){
+        this.router.navigateByUrl('/preguntados');
+      }
+      else{
+        alert("Debe loguearse para poder jugar.");
+        this.router.navigateByUrl('/login');
+      }
   }
+  
 
 }

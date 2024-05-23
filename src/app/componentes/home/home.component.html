@@ -3,24 +3,32 @@
         <div class="row">
             <div class="col-sm-12" style="position: relative; top: 120px;">
                 <div class="text-center">
+                    <!-- <div class="jugadorGano">
+                    <h1 class="gano" #myDiv>GANASTE</h1>
+                        <div class = "botones">
+                            <button >Reiniciar</button>
+                            <button>Menu</button>
+                        </div>
+                    </div>  -->
                     <img src="../../../assets/icon.png" alt="Imagen" class="floating-image">
 
                     <div class="caja-juegos">
                         <div class="juegos">
-                            <img src="../../../assets/Minecraft-creeper-face.jpg" class="imagenes-juegos" [ngClass]="{'juego-elegido': imagenSeleccionada === 1}" (click)="seleccionarImagen(1)">
+                            <img src="../../../assets/PokemonFondo.jpg" class="imagenes-juegos" [ngClass]="{'juego-elegido': juegoSeleccionado === 1}" (click)="seleccionarImagen(1)">
+                            <h2 style="color: white;">Preguntados</h2>
                         </div>
                         <div class="juegos">
-                            <img src="../../../assets/Minecraft-creeper-face.jpg" class="imagenes-juegos" [ngClass]="{'juego-elegido': imagenSeleccionada === 2}" (click)="seleccionarImagen(2)">
+                            <img src="../../../assets/Minecraft-creeper-face.jpg" class="imagenes-juegos" [ngClass]="{'juego-elegido': juegoSeleccionado === 2}" (click)="seleccionarImagen(2)">
                         </div>
                         <div class="juegos">
-                            <img src="../../../assets/Minecraft-creeper-face.jpg" class="imagenes-juegos" [ngClass]="{'juego-elegido': imagenSeleccionada === 3}" (click)="seleccionarImagen(3)">
+                            <img src="../../../assets/Minecraft-creeper-face.jpg" class="imagenes-juegos" [ngClass]="{'juego-elegido': juegoSeleccionado === 3}" (click)="seleccionarImagen(3)">
                         </div>
                         <div class="juegos">
-                            <img src="../../../assets/Minecraft-creeper-face.jpg" class="imagenes-juegos" [ngClass]="{'juego-elegido': imagenSeleccionada === 4}" (click)="seleccionarImagen(4)">
+                            <img src="../../../assets/Minecraft-creeper-face.jpg" class="imagenes-juegos" [ngClass]="{'juego-elegido': juegoSeleccionado === 4}" (click)="seleccionarImagen(4)">
                         </div>
                     </div>
                     <div id="sixth" class="buttonBox mx-auto" style="position: relative; top: 50px;" >
-                        <button (click)="test()">JUGAR</button>
+                        <button (click)="jugar()">JUGAR</button>
                         <div class="border"></div>
                         <div class="border"></div>
                         <div class="border"></div>

@@ -1,0 +1,13 @@
+.opciones{
+    margin-left: 20px; /* Espacio entre las opciones */
+  }
+
+  .oscurecer:hover {
+    background-color: #999; /* Color de fondo al pasar el mouse */
+    color: #fff; /* Cambia el color de texto al pasar el mouse */
+  }
+
+  .oscurecerLogOut:hover {
+    background-color: #c04040; /* Color de fondo al pasar el mouse */
+    color: #fff; /* Cambia el color de texto al pasar el mouse */
+  }

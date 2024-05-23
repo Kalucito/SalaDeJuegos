@@ -1,7 +1,7 @@
 <div id="divTotal" class="background-image" >
     <div class="container" >
         <div class="row justify-content-center align-items-center vh-100">
-            <div class="col-md-4" style="background-color: rgb(42, 45, 70); height: 30vh; width: 60vh;">
+            <div class="col-md-4" style="background-color: rgb(42, 45, 70); height: 365px; width: 700px;">
                 <h1 style="font-weight: bold;">Iniciar Sesión</h1>
                 <form>
                     <div class="mb-3">
@@ -14,7 +14,10 @@
                         <a routerLink="../register" >Registrarse</a>
                     </div>
                     <div class="d-flex justify-content-center">
-                        <button (click)="logIn()" routerLink="../home" routerLinkActive="active-route" class="btn btn-primary" style="width: 30vh;">LogIn</button>
+                        <button (click)="logIn()" class="btn btn-primary" style="width: 30vh;">LogIn</button>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <button (click)="inicioRapido()" class="btn btn-primary" style="width: 15vh;margin: 15px;">Inicio Rápido</button>
                     </div>
                 </form>
             </div>

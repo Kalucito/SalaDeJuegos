@@ -3,6 +3,9 @@ import { LoginComponent } from './componentes/login/login-auth/login.component';
 import { RegisterAuthComponent } from './componentes/login/register-auth/register-auth.component';
 import { HomeComponent } from './componentes/home/home.component';
 import { AboutusComponent } from './componentes/aboutus/aboutus.component';
+import { AhorcadoComponent } from './componentes/juegos/ahorcado/ahorcado.component';
+import { PreguntadosComponent } from './componentes/juegos/preguntados/preguntados.component';
+import { MayormenorComponent } from './componentes/juegos/mayormenor/mayormenor.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: '/home', pathMatch: "full" },
@@ -10,4 +13,8 @@ export const routes: Routes = [
     { path: 'login', component: LoginComponent},
     { path: 'register', component: RegisterAuthComponent},
     { path: 'aboutus', component: AboutusComponent},
+    { path: 'ahorcado', component: AhorcadoComponent},
+    { path: 'mayormenor', component: MayormenorComponent},
+    { path: 'preguntados', component: PreguntadosComponent},
+
 ];

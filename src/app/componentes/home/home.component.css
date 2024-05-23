@@ -149,3 +149,14 @@
   border: 5px solid wheat;
 }
 
+.jugadorGano{
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: green;
+  z-index: 4;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+}

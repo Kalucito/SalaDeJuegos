@@ -49,7 +49,7 @@ export class LoginComponent {
       password : this.userPass || '',
     }
     try{
-      await this.authService.logIn(credential)
+      await this.authService.logIn(credential);
       this.router.navigateByUrl('/');
     } catch (e)
     {
@@ -58,22 +58,28 @@ export class LoginComponent {
 
   }
 
-  log()
+  inicioRapido()
   {
-    const credential : UserInterface = {
-      email: this.userMail || '',
-      password : this.userPass || '',
-    }
+    this.userMail = 'admin@gmail.com',
+    this.userPass = 'admin@gmail.com',
     
-    this.authService.logIn(credential).subscribe({
-      next: () => {
-        this.router.navigateByUrl('/');
-      }
-    })
+    this.logIn();
 
-    
-
-    
   }
+
+  // log()
+  // {
+  //   const credential : UserInterface = {
+  //     email: this.userMail || '',
+  //     password : this.userPass || '',
+  //   }
+    
+  //   this.authService.logIn(credential).subscribe({
+  //     next: () => {
+  //       this.router.navigateByUrl('/');
+  //     }
+  //   })
+    
+  // }
 
 }

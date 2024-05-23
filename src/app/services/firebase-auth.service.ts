@@ -17,18 +17,13 @@ import { User } from 'firebase/auth';
 export class FirebaseAuthService {
 
   private auth:Auth = inject(Auth);
-  // readonly authState$ = authState(this.auth);
 
   register(userCredential:UserInterface): Promise<UserCredential>{
     return createUserWithEmailAndPassword(this.auth, userCredential.email, userCredential.password);
   }
 
-  logIn(userCredential:UserInterface):Observable<void>{
-    // signInWithEmailAndPassword(this.auth, userCredential.email, userCredential.password);
-
-    const promise = signInWithEmailAndPassword(this.auth, userCredential.email, userCredential.password).then(()=>{
-    })
-    return from(promise);
+  logIn(userCredential:UserInterface){
+    return signInWithEmailAndPassword(this.auth, userCredential.email, userCredential.password);
   }
 
   logOut():Promise<void>
@@ -37,13 +32,6 @@ export class FirebaseAuthService {
   }
   
   getUser(){
-    // return authState;
     return authState(this.auth);
-    // authState(this.auth).subscribe((response) => {
-    //   return response;
-    // })
-
-    // const promise = authState
   }
-  // constructor() { }
 }

@@ -1,0 +1,42 @@
+<div class="mainContainer min-100vh background-image">
+    <div class="wrapper">
+      <div class="quiz-container">
+        <div class="quiz-head">
+          <h1 class="quiz-title">Preguntados</h1>
+          <div class="quiz-score">
+            <span>- / 3</span>
+            <span>Puntaje: -</span>
+          </div>
+        </div>
+        <div class="quiz-body">
+          <h2 class="quiz-question" id="question">
+            ¿QUÉ POKEMON ES?
+          </h2>
+          <div class="pokemon-div" >
+            <img *ngIf="pokemonObs$ | async as pokemonObs" src="{{pokemonObs.sprites.front_default}}" style="height: 250px;">
+          </div>
+          <ul class="quiz-options">
+            <li (click)="verificarRespuesta(1)"> {{opcionUno}} </li>
+            <li (click)="verificarRespuesta(2)"> {{opcionDos}} </li>
+            <li (click)="verificarRespuesta(3)"> {{opcionTres}} </li>
+            <li (click)="verificarRespuesta(4)"> {{opcionCuatro}} </li> 
+          </ul>
+          <div id="result"></div>
+        </div>
+        <div class="quiz-foot">
+          <button type="button" (click)="play()">Play Again!</button>
+        </div>
+        
+
+        <!-- <div class="jugadorGano">
+          <h1 class="gano" #myDiv>GANASTE</h1>
+          <div class = "botones">
+            <button (click)="changeContent()">Reiniciar</button>
+            <button>Menu</button>
+          </div>
+        </div> -->
+
+
+      </div>
+    </div>
+  </div>
