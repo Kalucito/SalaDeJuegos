@@ -49,7 +49,17 @@ export class HomeComponent {
   jugar()
   {
     if(this.userValue?.email != null){
-        this.router.navigateByUrl('/preguntados');
+        switch(this.juegoSeleccionado){
+          case 1:
+            this.router.navigateByUrl('/preguntados');
+            break;
+          case 2:
+            break;
+          case 3:
+            break;
+          case 4:
+            break;
+        }
       }
       else{
         alert("Debe loguearse para poder jugar.");

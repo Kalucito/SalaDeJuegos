@@ -48,13 +48,31 @@ export class LoginComponent {
       email: this.userMail || '',
       password : this.userPass || '',
     }
-    try{
-      await this.authService.logIn(credential);
+    // try{
+    //   await this.authService.logIn(credential);
+    //   this.router.navigateByUrl('/');
+    // } catch (e)
+    // {
+    //   console.log(e);
+    // }
+
+
+
+    this.authService.logIn(credential).then((res) =>{
       this.router.navigateByUrl('/');
-    } catch (e)
-    {
-      console.log(e);
-    }
+    }).catch((e) =>{
+      console.log(e.code);
+      // switch(e.code)
+      // {
+      //   case "":
+      //     break;
+      //   default:
+      //     console.log(e.code);
+      //     console.log(this.userMail);
+      //     console.log(this.userPass);
+      //     break;
+      // }
+    })
 
   }
 
