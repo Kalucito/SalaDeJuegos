@@ -1,0 +1,94 @@
+*{
+  user-select: none;
+}
+
+.min-100vh {
+    min-height: 100vh;
+    background-image: url("../../../../assets/mayormenor.webp");
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  
+  .min-100vh::after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background-image: linear-gradient(to top, #000 0%, transparent);
+    background-size: cover;
+  }
+  
+  /* Contenido */
+  .container {
+    z-index: 1;
+    position: relative;
+  }
+  
+  /* Titulo */
+  .titulo {
+    letter-spacing: 10px;
+    font-size: 60px;
+    /* margin-top: 10px; */
+    color: white;
+  }
+  
+  /* Cartas */
+  .deck {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .card {
+    width: 248px;
+    height: 380px;
+    background: white;
+    border-radius: 20px;
+    padding: 18px 6px;
+    margin: 3px;
+    font-size: 70px;
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat;
+  }
+
+  .card:hover {
+    box-shadow: 2px 8px 10px RGBA(0, 0, 0, 0.5);
+    transform: translate(-1px, -6px);
+    transition: transform 0.25s ease;
+    will-change: transform;
+    user-select: none;
+    cursor: pointer;
+  }
+
+  
+  /* Score */
+  .score-container div {
+    font-size: 60px;
+  }
+  
+  /* Seccion de botones */
+  .botones-container h2 {
+    font-size: 30px;
+  }
+  
+  .botones-container div {
+    margin-top: 30px;
+  }
+  
+  .botones-container div button {
+    margin: 10px;
+    background-color: #009970;
+    color: white;
+    border: 3px solid #064131;
+    border-radius: 10px;
+    width: 12%;
+    height: 30%;
+  }
+  
+  .botones-container div button:active {
+    transform: scale(0.9);
+  }

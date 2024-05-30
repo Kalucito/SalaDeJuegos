@@ -19,59 +19,42 @@ export class LoginComponent {
 
   userMail: string = "";
   userPass : string = "";
+  errorLogin: boolean = false;
+  errorText: string = "";
 
   private router = inject(Router);
 
   constructor(public auth: Auth, private firestore: Firestore){
   }
 
-  // Login()
-  // {
-  //   signInWithEmailAndPassword(this.auth, this.userMail, this.userPass).then((res) => {
-  //     let col = collection(this.firestore, "logins");
-  //     addDoc(col, {fecha : new Date(), "user" : this.userMail});
-  //   }).catch((e) => {
-  //     switch(e.code)
-  //     {
-  //       case "":
-  //         break;
-  //       default:
-  //         break;
-  //     }
-  //   })
-  // }
 
   private authService = inject(FirebaseAuthService);
 
   async logIn():Promise<void>{
+    this.errorLogin = false;
+
     const credential : UserInterface = {
       email: this.userMail || '',
       password : this.userPass || '',
     }
-    // try{
-    //   await this.authService.logIn(credential);
-    //   this.router.navigateByUrl('/');
-    // } catch (e)
-    // {
-    //   console.log(e);
-    // }
-
 
 
     this.authService.logIn(credential).then((res) =>{
       this.router.navigateByUrl('/');
     }).catch((e) =>{
-      console.log(e.code);
-      // switch(e.code)
-      // {
-      //   case "":
-      //     break;
-      //   default:
-      //     console.log(e.code);
-      //     console.log(this.userMail);
-      //     console.log(this.userPass);
-      //     break;
-      // }
+      this.errorLogin = true;
+      switch(e.code)
+      {
+        case "auth/invalid-email":
+          this.errorText = "El email es invalido.";
+          break;
+        case "auth/missing-password":
+          this.errorText = "La contraseña es invalida.";
+          break;
+        case "auth/invalid-credential":
+          this.errorText = "Credenciales incorrectas.";
+          break;
+      }
     })
 
   }

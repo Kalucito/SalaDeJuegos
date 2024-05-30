@@ -1,0 +1,92 @@
+#divTotal {
+    position: fixed;
+    top: 55px;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-repeat: no-repeat;
+    height: calc(100% - 55px);
+    background-size: cover;
+    z-index: 8;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .header, .header2 {
+    background-color: #431d88;
+    color: white;
+    font-weight: 700;
+    padding: 1rem;
+    text-align: center;
+  }
+  
+  .card-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1rem;
+    background-color: #ffffff;
+  }
+  
+  .card-body::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .botonEnviar {
+    width: 30px;
+    height: 30px;
+  }
+  
+  .enviado, .recibido {
+    padding: 0.5rem;
+    display: block;
+    color: white;
+    min-width: 50.01%;
+    border-radius: 16px;
+    text-align: left;
+    max-width: 80%;
+    margin-bottom: 0.5rem;
+    word-wrap: break-word;
+  }
+  
+
+  .enviado {
+    float: right;
+    background: linear-gradient(45deg, rgb(101, 14, 189), rgb(210, 58, 202));
+  }
+  
+  .recibido {
+    float: left;
+    background-color: grey;
+  }
+  
+  p span {
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.699);
+  }
+  
+  .contenedorFooter {
+    padding: 1rem;
+    background-color: #431d88;
+  }
+  
+  .input-group {
+    display: flex;
+    width: 100%;
+  }
+
+  .spinner-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+  
+  .spinner-border {
+    width: 3rem;
+    height: 3rem;
+    border-width: 0.3rem;
+  }
+  
+  .espaciador {
+    height: 0.5rem; /* Ajusta esta altura según el espacio deseado */
+  }

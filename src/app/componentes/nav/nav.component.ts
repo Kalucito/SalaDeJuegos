@@ -1,10 +1,11 @@
 import { Component, EventEmitter, inject} from '@angular/core';
-import { RouterOutlet, RouterLink, RouterLinkActive, Event } from '@angular/router';
+import { RouterOutlet, RouterLink, RouterLinkActive, Event, Router, NavigationStart } from '@angular/router';
 import { FirebaseAuthService} from '../../services/firebase-auth.service';
 import { CommonModule } from '@angular/common';
 import { User } from 'firebase/auth';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { authState, Auth } from '@angular/fire/auth';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-nav',
@@ -15,19 +16,27 @@ import { authState, Auth } from '@angular/fire/auth';
 })
 export class NavComponent {
 
-  
+  private navigationSubscription: Subscription |null = null;
   userObs$!: Observable<User | null>;
   userValue!: User | null;
 
   private authservice = inject(FirebaseAuthService);
 
-  constructor()
+  constructor(private dialog: MatDialog, private router: Router, public miDialog: MatDialog)
   {
-    // this.user$ = this.authservice.getUser();
     this.userObs$ = this.authservice.getUser();
     this.userObs$.subscribe((response) => {
       this.userValue = response;
     })
+  }
+
+  ngOnInit(): void {
+    this.navigationSubscription = this.router.events.subscribe(event => {
+      if (event instanceof NavigationStart) {
+        this.dialog.closeAll();
+        this.miDialog.closeAll();
+      }
+    });
   }
 
   async logOut(): Promise<void>{
@@ -36,17 +45,8 @@ export class NavComponent {
     }catch(e){
       console.log(e);
     }
-  }
-
-  test()
-  {
-    // this.obs.subscribe((response) => {
-    console.log(this.userValue);
-      // })
-
-    // authState(this.auth).subscribe((response) => {
-    //   console.log(response);
-    // })
+    this.router.navigateByUrl('/home');
+    
   }
 
 }

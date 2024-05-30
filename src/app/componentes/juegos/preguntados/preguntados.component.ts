@@ -4,6 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { PokeNames, Pokemon, Sprites } from '../../../interfaces/pokemon.interface';
 import { CommonModule } from '@angular/common';
 import { Observable } from 'rxjs';
+import { DialogService } from '../../../services/dialog.service';
 
 @Component({
   selector: 'app-preguntados',
@@ -14,37 +15,94 @@ import { Observable } from 'rxjs';
 })
 export class PreguntadosComponent {
   
+  puntaje: number = 0;
   pokemon!: Pokemon | undefined;
   pokemons!: PokeNames[] | undefined;
   opcionUno!: string;
   opcionDos!: string;
   opcionTres!: string;
   opcionCuatro!: string;
+  botonDeshabilitado: boolean = false;
   pokemonObs$! :Observable<Pokemon | undefined>;
+  private dialog = inject(DialogService);
+  excludedPokemonNames: PokeNames[] = [];
 
-  @ViewChild('myDiv') myDiv!: ElementRef;
+  remainingTime: number = 30; // Duración del temporizador en segundos
+  intervalId: any;
+
+  openDialog(caso:number){
+    this.botonDeshabilitado = true;
+
+    switch(caso)
+    {
+      case 1:
+        if(this.puntaje > 0)
+          {
+            this.dialog.openDialog({tittle: 'Juego Terminado', content: `Conseguiste acertar: ${this.puntaje}`, img:'../../../assets/derrota.png', retryAction:() => this.play(), btn: 'Jugar de Nuevo'});
+
+          }
+          else{
+            this.dialog.openDialog({tittle: 'PERDISTE', content: 'Sigue intentando. No te rindas!', img:'../../../assets/derrota.png', retryAction:() => this.play(), btn: 'Jugar de Nuevo'});
+          }
+        break;
+      case 2:
+        if(this.puntaje > 0)
+          {
+            this.dialog.openDialog({tittle: 'EL TIEMPO SE AGOTO', content: `Conseguiste acertar: ${this.puntaje}` , img:'../../../assets/victoria.png', retryAction:() => this.play(), btn: 'Jugar de Nuevo'});
+          }
+          else{
+            this.dialog.openDialog({tittle: 'EL TIEMPO SE AGOTO', content: 'No pudiste acertar, no te rindas!', img:'../../../assets/derrota.png', retryAction:() => this.play(), btn: 'Jugar de Nuevo'});
+          }
+        break;
+      case 3:
+        this.dialog.openDialog({tittle: 'ESTAS LISTO?', content: 'Oprime comenzar para iniciar el juego', img:'../../../assets/estaslisto.png', retryAction:() => this.play(), btn: 'Comenzar'});
+        break;
+      case 4:
+        this.dialog.openDialog({tittle: 'FELICITACIONES!', content: 'Adivinaste todos los pokemons!', img:'../../../assets/estaslisto.png', retryAction:() => this.play(), btn: 'Comenzar'});
+        break;
+    }
+  }
 
   constructor(private pokemonService: PreguntadosService){
-    this.play();
+    this.openDialog(3);
   }
-  
+
+  ngOnDestroy(): void {
+    this.stopTimer();
+  }
+
+
   play()
   {
-    this.pokemonObs$ = this.pokemonService.getPokemon();
+    if(this.puntaje == 300)
+    {
+      this.stopTimer();
+      this.excludedPokemonNames = [];
+      this.openDialog(4);
+      this.puntaje = 0;
+    }else{
 
-    this.pokemonObs$.subscribe((response) =>{
-      this.pokemon = response;
-      this.pokemonService.getOpciones().subscribe((response) =>{
-        this.pokemons = response;
-        this.opcionesRandom();
+      this.resetTimer();
+      this.startTimer();
+      this.pokemonObs$ = this.pokemonService.getPokemon();
+      
+      this.pokemonObs$.subscribe((response) =>{
+        this.pokemon = response;
+        this.excludedPokemonNames?.push({ name: response!.name, url: '' });
+        this.pokemonService.getOpciones().subscribe((response) =>{
+          this.pokemons = response;
+          this.opcionesRandom();
+        });
       });
-    });
+        
+      this.botonDeshabilitado = false;
+    }
 
   }
 
   opcionesRandom(): void {
 
-    const filteredPokemons = this.pokemons!.filter(poke => poke.name.toLowerCase() !== this.pokemon?.name);
+    const filteredPokemons = this.pokemons!.filter(poke => !this.excludedPokemonNames.some(excluded => excluded.name.toLowerCase() === poke.name.toLowerCase()))
 
     //Mezclar
     const shuffled = filteredPokemons.sort(() => 0.5 - Math.random());
@@ -67,57 +125,90 @@ export class PreguntadosComponent {
 
   verificarRespuesta(opcion :number)
   {
-    switch(opcion)
+    if(this.botonDeshabilitado != true)
     {
-      case 1:
-        if(this.opcionUno == this.pokemon?.name)
-          {
-            alert("Correcto");
-          }
-          else{
-            alert("Mal");
-          }
-        break;
-        break;
-      case 2:
-        if(this.opcionDos == this.pokemon?.name)
-          {
-            alert("Correcto");
-          }
-          else{
-            alert("Mal");
-          }
-        break;
-        break;
-      case 3:
-        if(this.opcionTres == this.pokemon?.name)
-          {
-            alert("Correcto");
-          }
-          else{
-            alert("Mal");
-          }
-        break;
-        break;
-      case 4:
-        if(this.opcionCuatro == this.pokemon?.name)
-          {
-            alert("Correcto");
-          }
-          else{
-            alert("Mal");
-          }
-        break;
+      switch(opcion)
+      {
+        case 1:
+          if(this.opcionUno == this.pokemon?.name)
+            {
+              this.puntaje++;
+              this.play();
+            }
+            else{
+              this.excludedPokemonNames = [];
+              this.stopTimer();
+              this.openDialog(1);
+              this.puntaje = 0;
+            }
+          break;
+        case 2:
+          if(this.opcionDos == this.pokemon?.name)
+            {
+              this.puntaje++;
+              this.play();
+            }
+            else{
+              this.excludedPokemonNames = [];
+              this.stopTimer();
+              this.openDialog(1);
+              this.puntaje = 0;
+            }
+          break;
+        case 3:
+          if(this.opcionTres == this.pokemon?.name) 
+            {
+              this.puntaje++;
+              this.play();
+            }
+            else{
+              this.excludedPokemonNames = [];
+              this.stopTimer();
+              this.openDialog(1);
+              this.puntaje = 0;
+            }
+          break;
+        case 4:
+          if(this.opcionCuatro == this.pokemon?.name)
+            {
+              this.puntaje++;
+              this.play();
+            }
+            else{
+              this.excludedPokemonNames = [];
+              this.stopTimer();
+              this.openDialog(1);
+              this.puntaje = 0;
+            }
+          break;
+      }
     }
   }
-
-
-
-
-
-  changeContent() {
-      this.myDiv.nativeElement.innerHTML = 'Contenido modificado';
+  
+  startTimer(): void {
+    this.intervalId = setInterval(() => {
+      this.remainingTime--;
+      if (this.remainingTime <= 0) { 
+        this.stopTimer();
+        this.openDialog(2);
+        this.excludedPokemonNames = [];
+      }
+    }, 1000);
   }
 
+  stopTimer(): void {
+    clearInterval(this.intervalId);
+  }
+
+  resetTimer(): void {
+    this.stopTimer();
+    this.remainingTime = 10;
+  }
+
+  reiniciar()
+  {
+    this.excludedPokemonNames = [];
+    this.play();
+  }
 
 }

@@ -1,103 +1,123 @@
+*{
+  user-select: none;
+}
+
 .ahorcado-img {
-    height: 400px;
-  }
+  height: 500px;
+}
   
-  button {
-    margin-top: 5px;
-    margin-left: 5px;
-    width: 70px;
-    height: 55px;
-    background-color: #009970;
-    color: #fff;
-  }
+button {
+  margin-top: 5px;
+  margin-left: 5px;
+  width: 15vh;
+  height: 5vh;
+  background-color: #009970;
+  color: #fff;
+  font-size: 2.5vh;
+}
   
-  .score-label {
-    font-weight: bold;
-    margin-right: 10px;
-  }
+.score-label {
+  font-weight: bold;
+  margin-right: 10px;
+}
   
-  .score-value {
-    font-weight: normal;
-  }
+.score-value {
+  font-weight: normal;
+}
   
-  .score-container {
-    background-color: transparent;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    max-width: 400px;
-    margin: 0 auto;
-    padding: 20px;
-  }
+.score-container {
+  background-color: transparent;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+}
   
-  .score {
-    font-size: 16px;
-    font-weight: bold;
-    margin-bottom: 20px;
-  }
+.score {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
   
-  .score-button {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-  }
+.score-button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
   
-  .score-button:hover {
-    background-color: #0056b3;
-  }
+.score-button:hover {
+  background-color: #0056b3;
+}
   
-  .min-100vh {
-    min-height: 100vh;
-    /* background-image: url("../../../../assets/ahorcado.png"); */
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
+.min-100vh {
+  min-height: 100vh;
+  background-image: url("../../../../assets/hojacuadriculada.jpg"); 
+}
   
-  .min-100vh::after {
-    content: "";
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    background-image: linear-gradient(to top, #000 0%, transparent);
-    background-size: cover;
-  }
+.min-100vh::after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background-image: linear-gradient(to top, #000 0%, transparent);
+  background-size: cover;
+}
   
-  .container {
-    z-index: 1;
-  }
+.container {
+  z-index: 1;
+}
   
-  .containerBtn {
-    border-radius: 30px;
-    background-color: rgba(255, 255, 255, 0.5);
-  }
+.containerBtn {
+  border-radius: 30px;
+  background-color: rgba(255, 255, 255, 0.5);
+  width: 70vh;
+}
   
-  .intentosContainer {
-    margin-top: 30px;
-    text-transform: uppercase;
-    letter-spacing: 10px;
-  }
-  h1 {
-    font-size: 100px;
-    margin: 0;
-  }
+.intentosContainer {
+  margin-top: 30px;
+  text-transform: uppercase;
+  letter-spacing: 10px;
+}
+
+h1 {
+  font-size: 100px;
+  margin: 0;
+}
   
-  .btnJugarNuevo {
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    margin: 34px;
-    border-radius: 40px;
-    height: 90px;
-    width: 90px;
-    border: 1px #009970;
-  }
+.btnJugarNuevo {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  margin: 34px;
+  border-radius: 40px;
+  height: 90px;
+  width: 90px;
+  border: 1px #009970;
+}
   
-  .imgJugarNuevo {
-    height: 50px;
-    width: 50px;
-  }
+.imgJugarNuevo {
+  height: 50px;
+  width: 50px;
+}
+
+.oscurecer:hover {
+  border-radius: 10px;
+  background-color: #999; /* Color de fondo al pasar el mouse */
+  color: #fff; /* Cambia el color de texto al pasar el mouse */
+}
+
+.letra{
+  height: 7vh; width: 7vh;
+}
+
+.letra-elegida{
+  background-color: #000;
+  border-radius: 10px;
+}

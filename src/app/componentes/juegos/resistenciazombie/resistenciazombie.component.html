@@ -1,0 +1,13 @@
+<div id="divTotal"  style="top: 100px;" (click)="capturarClick($event)">
+    <div class="container-fluid d-flex align-items-center" style="position: absolute; top: 6vh; width: 100%;">
+        <p style="color: red; font-size: 5vh; font-family: Rubik Wet Paint, sans-serif; padding: 2vh;" >Puntos: <span style="color: black;">{{puntos}}</span></p>
+        <img src="../../../../assets/resistenciazombie/vidas/vida.{{vidas}}.png" class="ms-auto" style="user-select: none;" draggable="false">
+    </div>
+    <div class="container d-flex justify-content-center align-items-center" style="height: 100vh;">
+        <div class="row">
+            <div class="col-sm-12 text-center" style="position: relative;">
+                <button (click)="play()" [disabled]="botonDeshabilitado" *ngIf="botonDeshabilitado == false">Comenzar</button>
+            </div>
+        </div>
+    </div>
+</div>  

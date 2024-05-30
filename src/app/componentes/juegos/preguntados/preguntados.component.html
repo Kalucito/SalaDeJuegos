@@ -4,16 +4,18 @@
         <div class="quiz-head">
           <h1 class="quiz-title">Preguntados</h1>
           <div class="quiz-score">
-            <span>- / 3</span>
-            <span>Puntaje: -</span>
+            <span>Puntaje: <span style="background-color: rgba(18, 238, 11, 0.51);">{{puntaje}}</span></span>
+            <span style="position: relative;">Tiempo: {{ remainingTime }}s</span>
           </div>
+          <!-- <div class="quiz-score">
+          </div> -->
         </div>
         <div class="quiz-body">
           <h2 class="quiz-question" id="question">
             ¿QUÉ POKEMON ES?
           </h2>
           <div class="pokemon-div" >
-            <img *ngIf="pokemonObs$ | async as pokemonObs" src="{{pokemonObs.sprites.front_default}}" style="height: 250px;">
+            <img *ngIf="pokemonObs$ | async as pokemonObs" src="{{pokemonObs.sprites.front_default}}" style="height: 250px;" draggable="false">
           </div>
           <ul class="quiz-options">
             <li (click)="verificarRespuesta(1)"> {{opcionUno}} </li>
@@ -24,19 +26,8 @@
           <div id="result"></div>
         </div>
         <div class="quiz-foot">
-          <button type="button" (click)="play()">Play Again!</button>
+          <button type="button" [disabled]="botonDeshabilitado" (click)="reiniciar()">Reincio</button>
         </div>
-        
-
-        <!-- <div class="jugadorGano">
-          <h1 class="gano" #myDiv>GANASTE</h1>
-          <div class = "botones">
-            <button (click)="changeContent()">Reiniciar</button>
-            <button>Menu</button>
-          </div>
-        </div> -->
-
-
       </div>
     </div>
   </div>

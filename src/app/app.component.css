@@ -14,4 +14,3 @@
     opacity: 0.3; /* Opacidad de la imagen de fondo */
     z-index: -1; /* Coloca el pseudo-elemento detrás del contenido */
 }
-

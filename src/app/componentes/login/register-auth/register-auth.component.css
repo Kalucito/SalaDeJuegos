@@ -27,3 +27,8 @@
     opacity: 0.3; /* Opacidad de la imagen de fondo */
     z-index: -1; /* Coloca el pseudo-elemento detrás del contenido */
 }
+
+a {
+    color: rgba(var(--bs-link-color-rgb), var(--bs-link-opacity, 1));
+    text-decoration: underline;
+}

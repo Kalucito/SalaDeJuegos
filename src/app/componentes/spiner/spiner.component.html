@@ -1,0 +1,12 @@
+<!-- <div class="spinner-container" *ngIf="counter > 0">
+    <mat-spinner></mat-spinner>
+    <div class="countdown">{{ counter }}</div>
+</div>
+   -->
+<div class="spinner-container" mat-dialog-content  *ngIf="counter > 0">
+        <h2 class="d-flex text-center" mat-dialog-title>El juego comienza en:</h2>
+        <h1 class="text-center countdown" *ngIf="counter > 0">{{ counter }}</h1>
+    <div class="d-flex jaumeustify-content-center">
+        <mat-spinner style="margin-top: 20px;" diameter="100"></mat-spinner>
+    </div>
+  </div>

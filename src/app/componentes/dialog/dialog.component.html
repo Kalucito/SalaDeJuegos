@@ -1,0 +1,13 @@
+<h2 class="d-flex justify-content-center" mat-dialog-title>{{data.tittle}}</h2>
+<mat-dialog-content >
+    <div>
+        <p>{{data.content}}</p>
+        <div class="d-flex justify-content-center">
+            <img src="{{data.img}}" style="height: 200x; width: 100px;">
+        </div>
+    </div>
+</mat-dialog-content>
+<mat-dialog-actions class="d-flex justify-content-center">
+    <button mat-button mat-dialog-close (click)="onMenuClick()" >Menú</button>
+    <button mat-button mat-dialog-close (click)="onRetryClick()">{{data.btn}}</button>
+</mat-dialog-actions>

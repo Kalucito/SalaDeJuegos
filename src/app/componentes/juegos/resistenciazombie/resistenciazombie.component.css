@@ -1,0 +1,59 @@
+
+*{
+    user-select: none;
+}
+
+#divTotal{
+    height: 100%;
+    background-image: url('../../../../assets/resistenciazombie/fondo.webp');
+    background-repeat: no-repeat;
+    background-size: cover;
+    cursor: url('../../../../assets/resistenciazombie/cursor.png'), auto;
+    width: 100%;
+
+}
+  
+/* .zombie {
+    user-select: none;
+    pointer-events: none;
+}
+
+img {
+    user-select: none;
+    pointer-events: ;
+} */
+  
+.bloodSpot {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background-image: url('../../../../assets/resistenciazombie/blood-spot.png');
+    background-size: cover;
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+  button {
+    height: 8vh;
+    width: 20vh;
+    background-color: #4CAF50; /* Verde */
+    color: white;
+    border: none;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 3vh;
+    margin: 4px 2px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+button:hover {
+    background-color: #45a049; /* Verde más oscuro */
+}
+
+button:active {
+    background-color: #317835; /* Verde más oscuro */
+    transform: scale(0.98); /* Reducir el tamaño un poco */
+}

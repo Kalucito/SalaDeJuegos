@@ -1,5 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
 
+*{
+  user-select: none;
+}
+
 .min-100vh {
   min-height: 100vh;
   /* background-image: url("../../../../assets/preguntados.png"); */
@@ -175,5 +179,10 @@
   height: 250px;
   background: linear-gradient(to right, rgb(170, 41, 41), rgb(214, 197, 14));
   border-radius: 25px; /* Bordes redondeados */
+}
+
+.timer {
+  /* font-size: 2em; */
+  /* margin-bottom: 20px; */
 
 }

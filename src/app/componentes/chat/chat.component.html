@@ -1,0 +1,37 @@
+<div id="divTotal">
+    <ng-container *ngIf="auxObservable$ | async as user">
+      <div class="header" >CHAT</div>
+      <div class="card-body" #contenedorMensajes>
+        <div *ngIf="isLoading" class="spinner-container">
+          <div class="spinner-border" role="status">
+          </div>
+        </div>
+        <div data-bs-spy="scroll" class="contenedorMensajes" style="padding-bottom: 5px;">
+          <p
+            *ngFor="let mensaje of mensajes"
+            [ngClass]="user.email === mensaje.mail ? 'enviado' : 'recibido'"
+          >
+            {{ mensaje.texto }}
+            <span>{{ mensaje.date }}</span>
+          </p>
+        </div>
+      </div>
+      <div class="espaciador"></div>
+      <div class="card-footer text-body-secondary contenedorFooter">
+        <form [formGroup]="form" (ngSubmit)="enviarMensaje()">
+          <div class="input-group mb-3">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Ingrese su mensaje"
+              formControlName="mensaje"
+            />
+            <button class="input-group-text" id="basic-addon2">
+              <img src="../../../assets/iconoenviar.png" class="botonEnviar" />
+            </button>
+          </div>
+        </form>
+      </div>
+    </ng-container>
+  </div>
+  

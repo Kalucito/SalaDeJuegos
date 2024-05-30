@@ -3,39 +3,30 @@
         <div class="row">
             <div class="col-sm-12" style="position: relative; top: 120px;">
                 <div class="text-center">
-                    <!-- <div class="jugadorGano">
-                    <h1 class="gano" #myDiv>GANASTE</h1>
-                        <div class = "botones">
-                            <button >Reiniciar</button>
-                            <button>Menu</button>
-                        </div>
-                    </div>  -->
-                    <img src="../../../assets/icon.png" alt="Imagen" class="floating-image">
-
+                    <img src="../../../assets/icon.png" alt="Imagen" class="floating-image" draggable="false">
+                    <div class="container text-center" style= "margin-top: 20px; width: 850px;" *ngIf="mostrarDescripcion">
+                        <h2 style="color: white; font-size: 40px;">{{juegoTitulo}}</h2>
+                        <p style="color: white; font-size: 20px;">{{descripcion}}</p>
+                    </div>
                     <div class="caja-juegos">
                         <div class="juegos">
-                            <img src="../../../assets/PokemonIcono.jpg" class="imagenes-juegos" [ngClass]="{'juego-elegido': juegoSeleccionado === 1}" (click)="seleccionarImagen(1)">
+                            <img src="../../../assets/PokemonIcono.jpg" class="imagenes-juegos" (click)="seleccionarImagen(1)" (mouseover)="mostrarDesc(1)" (mouseleave)="ocultarDesc()" draggable="false">
                             <h2 style="color: white;">Preguntados</h2>
                         </div>
                         <div class="juegos">
-                            <img src="../../../assets/Minecraft-creeper-face.jpg" class="imagenes-juegos" [ngClass]="{'juego-elegido': juegoSeleccionado === 2}" (click)="seleccionarImagen(2)">
+                            <img src="../../../assets/mayormenor.webp" class="imagenes-juegos" (click)="seleccionarImagen(2)" (mouseover)="mostrarDesc(2)" (mouseleave)="ocultarDesc()" draggable="false">
+                            <h2 style="color: white;">Mayor o Menor</h2>
                         </div>
                         <div class="juegos">
-                            <img src="../../../assets/Minecraft-creeper-face.jpg" class="imagenes-juegos" [ngClass]="{'juego-elegido': juegoSeleccionado === 3}" (click)="seleccionarImagen(3)">
+                            <img src="../../../assets/ahorcado/ahorcado.jpeg" class="imagenes-juegos" (click)="seleccionarImagen(3)" (mouseover)="mostrarDesc(3)" (mouseleave)="ocultarDesc()" draggable="false">
+                            <h2 style="color: white;">Ahorcado</h2>
                         </div>
                         <div class="juegos">
-                            <img src="../../../assets/Minecraft-creeper-face.jpg" class="imagenes-juegos" [ngClass]="{'juego-elegido': juegoSeleccionado === 4}" (click)="seleccionarImagen(4)">
+                            <img src="../../../assets/resistenciazombie/resistenciazombie.webp" class="imagenes-juegos" (click)="seleccionarImagen(4)" (mouseover)="mostrarDesc(4)" (mouseleave)="ocultarDesc()" draggable="false">
+                            <h2 style="color: white;">Resistencia Zombie</h2>
                         </div>
-                    </div>
-                    <div id="sixth" class="buttonBox mx-auto" style="position: relative; top: 50px;" >
-                        <button (click)="jugar()">JUGAR</button>
-                        <div class="border"></div>
-                        <div class="border"></div>
-                        <div class="border"></div>
-                        <div class="border"></div>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>

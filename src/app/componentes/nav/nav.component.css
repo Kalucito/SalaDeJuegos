@@ -1,13 +1,17 @@
+*{
+  user-select: none;
+}
+
 .opciones{
-    margin-left: 20px; /* Espacio entre las opciones */
+    margin-left: 20px; 
   }
 
   .oscurecer:hover {
-    background-color: #999; /* Color de fondo al pasar el mouse */
-    color: #fff; /* Cambia el color de texto al pasar el mouse */
+    background-color: #999;
+    color: #fff; 
   }
 
   .oscurecerLogOut:hover {
-    background-color: #c04040; /* Color de fondo al pasar el mouse */
-    color: #fff; /* Cambia el color de texto al pasar el mouse */
+    background-color: #c04040;
+    color: #fff;
   }
